@@ -156,17 +156,20 @@
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome:</label>
-                            <input type="text" id="name" class="form-control" name="name" aria-label="Digite seu nome" placeholder="Digite seu nome">
+                            <input type="text" id="name" class="form-control" name="name" aria-label="Digite seu nome"
+                                placeholder="Digite seu nome">
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" class="form-control" name="email" aria-label="Digite seu email" placeholder="Digite seu email">
+                            <input type="email" id="email" class="form-control" name="email"
+                                aria-label="Digite seu email" placeholder="Digite seu email">
                         </div>
 
                         <div class="mb-3">
                             <label for="message" class="form-label">Mensagem:</label>
-                            <textarea id="message" class="form-control" name="message" rows="5" aria-label="Digite sua mensagem" placeholder="Digite sua mensagem"></textarea>
+                            <textarea id="message" class="form-control" name="message" rows="5"
+                                aria-label="Digite sua mensagem" placeholder="Digite sua mensagem"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
@@ -207,14 +210,45 @@
         </div>
     </footer>
 
+    <!-- Widget VLibras com configurações personalizadas -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const widget = new window.VLibras.Widget({
+                rootPath: 'https://vlibras.gov.br/app',
+                personalization: 'https://vlibras.gov.br/api/config',
+                opacity: 0.7, // Opacidade do widget (0 a 1)
+                position: 'R', // Posição (BR = canto inferior direito)
+                avatar: 'random' // 'default', 'random' ou URL de avatar customizado
+            });
+
+            // Inicializa o widget
+            widget.init();
+
+            // Opcional: Evento quando o widget estiver pronto
+            document.addEventListener('vlibras-ready', function () {
+                console.log('VLibras está pronto!');
+            });
+        });
+    </script>
+
     <!-- Scripts -->
     <!-- Bibliotecas externas -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"
+        defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"
+        defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"
+        defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js" defer></script>
 
     <!-- Módulos ES6 (carregados em ordem) -->
