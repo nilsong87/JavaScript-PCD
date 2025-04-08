@@ -75,6 +75,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#sobre">Sobre</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -154,29 +157,45 @@
                                 O feedback de áudio será fornecido aqui...
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nome:</label>
-                            <input type="text" id="name" class="form-control" name="name" aria-label="Digite seu nome"
-                                placeholder="Digite seu nome">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" class="form-control" name="email"
-                                aria-label="Digite seu email" placeholder="Digite seu email">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mensagem:</label>
-                            <textarea id="message" class="form-control" name="message" rows="5"
-                                aria-label="Digite sua mensagem" placeholder="Digite sua mensagem"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                        
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato" class="contact-section py-5" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading" class="text-center mb-5">Entre em Contato</h2>
+                <form action="#" method="post" aria-label="Formulário de contato">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nome:</label>
+                                <input type="text" id="name" class="form-control" name="name" aria-label="Digite seu nome"
+                                    placeholder="Digite seu nome" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" id="email" class="form-control" name="email"
+                                    aria-label="Digite seu email" placeholder="Digite seu email" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Mensagem:</label>
+                        <textarea id="message" class="form-control" name="message" rows="5"
+                            aria-label="Digite sua mensagem" placeholder="Digite sua mensagem" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
         <div id="screen-reader-live-region" aria-live="polite" style="position: absolute; left: -9999px;"></div>
     </main>
 

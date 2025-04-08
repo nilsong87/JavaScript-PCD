@@ -97,3 +97,49 @@ footer a:hover {
 .font-xl {
     font-size: 1.5rem !important;
 }
+
+/* Estilização da seção de contato */
+.contact-section {
+    background-color: #ffffff; /* Cor de fundo clara */
+    padding: 3rem 1rem; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.contact-section h2 {
+    font-size: 2rem; /* Tamanho do título */
+    font-weight: bold; /* Negrito */
+    color: #343a40; /* Cor do texto */
+    margin-bottom: 2rem; /* Espaçamento inferior */
+}
+
+.contact-section .form-label {
+    font-weight: bold; /* Negrito para os rótulos */
+    color: #495057; /* Cor do texto */
+}
+
+.contact-section .form-control {
+    border: 1px solid #ced4da; /* Borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    padding: 0.75rem; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho do texto */
+}
+
+.contact-section .form-control:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra ao focar */
+}
+
+.contact-section button[type="submit"] {
+    background-color: #007bff; /* Cor do botão */
+    color: #fff; /* Cor do texto */
+    padding: 0.75rem 1.5rem; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho do texto */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.contact-section button[type="submit"]:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
