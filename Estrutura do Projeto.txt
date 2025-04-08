@@ -1,0 +1,15 @@
+/javascript-para-cegos/
+├── index.html                  # Página principal
+├── css/
+│   ├── style.css               # Estilos principais
+│   ├── accessibility.css       # Estilos específicos para acessibilidade
+│   └── themes.css              # Temas de alto contraste
+├── js/
+│   ├── main.js                 # Lógica principal
+│   ├── screen-reader.js        # Integração com leitores de tela
+│   ├── keyboard-nav.js         # Navegação por teclado
+│   └── lessons.js              # Conteúdo das aulas
+├── audio/                      # Arquivos de áudio para feedback
+├── images/                     # Imagens com descrições alternativas
+├── lessons/                    # Conteúdo das aulas em formato acessível
+└── README.md                   # Documentação do projeto

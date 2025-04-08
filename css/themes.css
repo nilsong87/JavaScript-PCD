@@ -1,0 +1,130 @@
+/* Temas de alto contraste e modos de visualização */
+
+/* Tema Alto Contraste Claro */
+.high-contrast-light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #0000ff;
+    --secondary-color: #ff0000;
+    --accent-color: #ffff00;
+    --border-color: #000000;
+}
+
+.high-contrast-light body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.high-contrast-light .navbar,
+.high-contrast-light .card,
+.high-contrast-light .accordion-item {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+.high-contrast-light .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: 2px solid var(--border-color);
+}
+
+.high-contrast-light a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Tema Alto Contraste Escuro */
+.high-contrast-dark {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #00ffff;
+    --secondary-color: #ff69b4;
+    --accent-color: #ffff00;
+    --border-color: #ffffff;
+}
+
+.high-contrast-dark body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.high-contrast-dark .navbar,
+.high-contrast-dark .card,
+.high-contrast-dark .accordion-item {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+.high-contrast-dark .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: 2px solid var(--border-color);
+}
+
+.high-contrast-dark a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Tema para Daltonismo - Protanopia */
+.protanopia-theme {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #3366cc;
+    --secondary-color: #66cc99;
+    --accent-color: #cc9933;
+}
+
+.protanopia-theme .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Tema para Daltonismo - Tritanopia */
+.tritanopia-theme {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #cc3399;
+    --secondary-color: #33cc66;
+    --accent-color: #9933cc;
+}
+
+.tritanopia-theme .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Classes para alternância de temas */
+.theme-selector {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.theme-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.theme-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Ícones de tema */
+.theme-icon {
+    font-size: 1.2rem;
+    pointer-events: none;
+}

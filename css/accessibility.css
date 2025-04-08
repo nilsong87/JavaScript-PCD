@@ -1,0 +1,74 @@
+/* Alto contraste */
+.high-contrast {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.high-contrast .navbar,
+.high-contrast .card,
+.high-contrast .accordion-item,
+.high-contrast .btn {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+}
+
+.high-contrast .btn-primary {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+
+.high-contrast a {
+    color: #ffff00 !important;
+}
+
+/* Foco aprimorado */
+.high-contrast :focus-visible {
+    outline: 3px solid #ffff00 !important;
+}
+
+/* Leitores de tela apenas */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Navegação por teclado */
+.keyboard-nav :focus {
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.5);
+}
+
+/* Áreas com atualização dinâmica */
+[aria-live="polite"],
+[aria-live="assertive"] {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Feedback de áudio */
+.audio-feedback {
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.audio-feedback::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background-image: url('../images/audio-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}

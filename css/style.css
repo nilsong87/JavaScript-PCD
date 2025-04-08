@@ -1,0 +1,99 @@
+/* Estilos base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding-top: 56px;
+}
+
+/* Barra de acessibilidade */
+.accessibility-bar {
+    background-color: #f8f9fa;
+    padding: 0.5rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-accessibility {
+    margin-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Cabeçalho */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Seção hero */
+.hero-section {
+    padding: 4rem 0;
+    background-color: #e9f5ff;
+}
+
+/* Cartões */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Seção de aulas */
+.lessons-section {
+    background-color: #fff;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e9f5ff;
+    color: #0d6efd;
+}
+
+/* Editor de código */
+.code-editor-section {
+    min-height: 500px;
+}
+
+#code-output, #audio-feedback {
+    min-height: 200px;
+}
+
+/* Rodapé */
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Foco visível para acessibilidade */
+:focus-visible {
+    outline: 3px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Classes de tamanho de fonte */
+.font-sm {
+    font-size: 0.875rem !important;
+}
+
+.font-md {
+    font-size: 1rem !important;
+}
+
+.font-lg {
+    font-size: 1.25rem !important;
+}
+
+.font-xl {
+    font-size: 1.5rem !important;
+}
