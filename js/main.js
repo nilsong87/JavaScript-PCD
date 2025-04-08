@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar a biblioteca de acessibilidade
     a11y.init();
 
-    // Inicializar os módulos
-    initScreenReader(a11y);
-    initKeyboardNavigation(a11y);
+    // Tornar o `a11y` acessível globalmente
+    window.a11y = a11y;
 
     console.log('Aplicação inicializada com sucesso.');
 
@@ -24,24 +23,71 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Inicializar o CodeMirror
+    const codeTextarea = document.getElementById('code-input');
+    if (codeTextarea && typeof CodeMirror !== 'undefined') {
+        const editor = CodeMirror.fromTextArea(codeTextarea, {
+            mode: 'javascript',
+            lineNumbers: true,
+            theme: 'monokai',
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            lineWrapping: true,
+        });
+
+        // Atualizar o valor do textarea ao executar o código
+        runCodeButton.addEventListener('click', () => {
+            codeInput.value = editor.getValue(); // Atualiza o valor do textarea com o conteúdo do editor
+        });
+
+        clearCodeButton.addEventListener('click', () => {
+            editor.setValue(''); // Limpa o conteúdo do editor
+        });
+    }
+
     // Evento para executar o código
     runCodeButton.addEventListener('click', () => {
         try {
-            const code = codeInput.value;
-            const result = eval(code); // Use eval com cuidado
-            codeOutput.textContent = result !== undefined ? result : 'Código executado sem saída.';
+            const originalConsoleLog = console.log; // Salvar o comportamento original do console.log
+            let output = ''; // Variável para armazenar a saída do console
+
+            // Redefinir o console.log para capturar as mensagens
+            console.log = function (message) {
+                output += message + '\n'; // Adicionar a mensagem à saída
+                originalConsoleLog.apply(console, arguments); // Chamar o comportamento original
+            };
+
+            const code = codeInput.value; // Captura o código digitado
+            const result = eval(code); // Executa o código (use eval com cuidado)
+
+            // Restaurar o comportamento original do console.log
+            console.log = originalConsoleLog;
+
+            // Exibir a saída no editor
+            codeOutput.textContent = output || (result !== undefined ? `Resultado: ${result}` : 'Código executado sem saída.');
             audioFeedback.textContent = 'Código executado com sucesso.';
+
+            // Reproduzir o feedback de áudio
+            if (window.a11y) {
+                window.a11y.announce('Código executado com sucesso.');
+            }
         } catch (error) {
             codeOutput.textContent = `Erro: ${error.message}`;
             audioFeedback.textContent = `Erro ao executar o código: ${error.message}`;
+
+            // Reproduzir o feedback de erro
+            if (window.a11y) {
+                window.a11y.announce(`Erro ao executar o código: ${error.message}`);
+            }
         }
     });
 
     // Evento para limpar o editor
     clearCodeButton.addEventListener('click', () => {
-        codeInput.value = '';
-        codeOutput.textContent = 'O resultado aparecerá aqui...';
-        audioFeedback.textContent = 'O feedback de áudio será fornecido aqui...';
+        codeInput.value = ''; // Limpa o campo de entrada
+        codeOutput.textContent = 'O resultado aparecerá aqui...'; // Reseta a saída
+        audioFeedback.textContent = 'O feedback de áudio será fornecido aqui...'; // Reseta o feedback
+        window.a11y.announce('Editor de código limpo.');
     });
 });
 

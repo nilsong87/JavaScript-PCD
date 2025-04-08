@@ -21,11 +21,27 @@ export const a11y = {
     },
 
     announce(message, priority = 'polite') {
-        this.init();
-        this.liveRegion.setAttribute('aria-live', priority);
-        this.liveRegion.textContent = '';
-        setTimeout(() => {
-            this.liveRegion.textContent = message;
-        }, 100);
+        const liveRegion = document.getElementById('screen-reader-live-region');
+        if (liveRegion) {
+            liveRegion.setAttribute('aria-live', priority);
+            liveRegion.textContent = ''; // Limpar conteúdo anterior
+            setTimeout(() => {
+                liveRegion.textContent = message; // Adicionar nova mensagem
+            }, 100);
+        } else {
+            console.warn('Região ao vivo não encontrada.');
+        }
+
+        // Reproduzir o áudio usando a API SpeechSynthesis
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(message);
+            utterance.lang = 'pt-BR'; // Definir o idioma como português do Brasil
+            window.speechSynthesis.speak(utterance);
+        } else {
+            console.error('API SpeechSynthesis não suportada neste navegador.');
+        }
+    },
+    init() {
+        console.log('Acessibilidade inicializada.');
     }
 };

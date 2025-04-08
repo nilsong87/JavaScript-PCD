@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/theme/monokai.min.css">
 </head>
 
 <body>
@@ -128,36 +130,32 @@
             </div>
         </section>
 
+        <!-- Editor de Código -->
         <section id="editor" class="code-editor-section py-5 bg-light" aria-labelledby="editor-heading">
             <div class="container">
-                <h2 id="editor-heading" class="text-center mb-5">Editor de Código Acessível</h2>
-
+                <h2 id="editor-heading" class="text-center mb-4">Editor de Código</h2>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="code-input" class="form-label">Digite seu código JavaScript:</label>
-                            <textarea id="code-input" class="form-control" rows="10" aria-describedby="code-help"
-                                aria-label="Editor de código"></textarea>
-                            <div id="code-help" class="form-text">Use Shift+Enter para executar o código</div>
-                        </div>
-                        <button id="run-code" class="btn btn-primary">Executar Código</button>
-                        <button id="clear-code" class="btn btn-secondary">Limpar Editor</button>
+                    <div class="col-md-12">
+                        <textarea id="code-input" class="form-control" rows="10" placeholder="Digite seu código aqui..."></textarea>
                     </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="code-output" class="form-label">Resultado:</label>
-                            <div id="code-output" class="p-3 bg-white border rounded" role="log" aria-live="polite">
-                                O resultado aparecerá aqui...
-                            </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12 text-center">
+                        <button id="run-code" class="btn btn-success me-2">Executar Código</button>
+                        <button id="clear-code" class="btn btn-danger">Limpar Código</button>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h3>Saída:</h3>
+                        <pre id="code-output" class="p-3 bg-white border rounded">O resultado aparecerá aqui...</pre>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <div id="audio-feedback" class="p-3 bg-light border rounded" role="status">
+                            O feedback de áudio será fornecido aqui...
                         </div>
-                        <div class="mb-3">
-                            <label for="audio-feedback" class="form-label">Feedback por Áudio:</label>
-                            <div id="audio-feedback" class="p-3 bg-white border rounded" role="status"
-                                aria-live="polite">
-                                O feedback de áudio será fornecido aqui...
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
@@ -261,14 +259,12 @@
     <!-- Bibliotecas externas -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"
-        defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"
-        defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"
-        defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/hint/show-hint.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/javascript/javascript.min.js"></script>
 
     <!-- Módulos ES6 (carregados em ordem) -->
     <script type="module" src="js/a11y.js"></script>
