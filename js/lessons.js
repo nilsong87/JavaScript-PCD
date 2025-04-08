@@ -1,3 +1,16 @@
+function speak(text) {
+    const synth = window.speechSynthesis;
+
+    // Verifica se já há uma fala em andamento e cancela
+    if (synth.speaking) {
+        synth.cancel();
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR'; // Define o idioma para português do Brasil
+    synth.speak(utterance);
+}
+
 export function initLessons() {
     const lessons = [
         {
@@ -1615,16 +1628,9 @@ console.log(executar(dobrar, 5)); // 10
     const lessonsContainer = document.getElementById('lessonsAccordion');
 
     if (lessonsContainer) {
-        // Limpar o conteúdo do contêiner antes de adicionar as lições
         lessonsContainer.innerHTML = '';
 
         lessons.forEach((lesson, index) => {
-            // Verificar se a aba já existe
-            if (document.getElementById(`collapse-${lesson.id}`)) {
-                console.log(`A aba da lição ${lesson.id} já foi criada.`);
-                return; // Pular a criação desta aba
-            }
-
             const lessonItem = document.createElement('div');
             lessonItem.classList.add('accordion-item');
 
@@ -1638,7 +1644,7 @@ console.log(executar(dobrar, 5)); // 10
                     <div class="accordion-body">
                         <p>${lesson.description}</p>
                         <button class="btn btn-primary btn-view-content" data-lesson-id="${lesson.id}" aria-label="Ver conteúdo da aula: ${lesson.title}">Ver Conteúdo</button>
-                        <button class="btn btn-sm btn-outline-primary read-lesson" aria-label="Ouvir conteúdo da lição: ${lesson.title}">Ouvir Lição</button>
+                        <button class="btn btn-sm btn-outline-primary read-lesson" data-lesson-id="${lesson.id}" aria-label="Ouvir título e descrição da lição: ${lesson.title}">Ouvir Título e Descrição</button>
                     </div>
                 </div>
             `;
@@ -1646,42 +1652,23 @@ console.log(executar(dobrar, 5)); // 10
             lessonsContainer.appendChild(lessonItem);
         });
 
-        // Registrar o evento de clique apenas uma vez
         lessonsContainer.addEventListener('click', function (e) {
-            // Verificar se o botão clicado é para ouvir a lição
             if (e.target.classList.contains('read-lesson')) {
-                // Encontrar o ID da lição correspondente
-                const accordionItem = e.target.closest('.accordion-item');
-                const lessonId = accordionItem ? accordionItem.querySelector('.btn-view-content').getAttribute('data-lesson-id') : null;
+                const lessonId = e.target.getAttribute('data-lesson-id');
+                const lesson = lessons.find(l => l.id === lessonId);
 
-                if (lessonId) {
-                    // Encontrar o conteúdo completo da lição
-                    const lesson = lessons.find(l => l.id === lessonId);
-                    const lessonContent = lesson ? lesson.content : '';
-
-                    if (lessonContent) {
-                        // Chamar a função de leitura do screen-reader
-                        if (window.screenReader) {
-                            window.screenReader.readContent(lessonContent);
-                        } else {
-                            console.log('Texto para reprodução:', lessonContent);
-                            speak(lessonContent); // Reproduzir o texto como áudio
-                        }
-                    }
+                if (lesson) {
+                    const textContent = `${lesson.title}. ${lesson.description}`;
+                    speak(textContent); // Reproduz o título e a descrição
                 }
             }
 
-            // Verificar se o botão clicado é para visualizar o conteúdo
             if (e.target.classList.contains('btn-view-content')) {
                 const lessonId = e.target.getAttribute('data-lesson-id');
                 const lesson = lessons.find(l => l.id === lessonId);
 
                 if (lesson) {
-                    // Garantir que a janela seja aberta apenas uma vez
-                    const existingModal = document.getElementById('lessonModal');
-                    if (!existingModal) {
-                        showLessonContent(lesson);
-                    }
+                    showLessonContent(lesson);
                 }
             }
         });
@@ -1703,7 +1690,7 @@ console.log(executar(dobrar, 5)); // 10
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                     </div>
                     <div class="modal-body">
-                        <p>${lesson.content}</p>
+                        ${lesson.content}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -1716,6 +1703,10 @@ console.log(executar(dobrar, 5)); // 10
 
         const bootstrapModal = new bootstrap.Modal(modal);
         bootstrapModal.show();
+
+        // Reproduz o conteúdo da lição
+        const textContent = lesson.content.replace(/<[^>]*>/g, '').trim();
+        speak(textContent);
 
         modal.addEventListener('hidden.bs.modal', function () {
             modal.remove();
