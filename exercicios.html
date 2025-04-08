@@ -8,18 +8,22 @@
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome para ícones acessíveis -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- CSS Customizado -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/themes.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
     <!-- Barra de Acessibilidade -->
-    <div id="accessibility-bar" class="accessibility-bar">
-        <div class="container">
+    <div id="accessibility-bar" class="accessibility-bar bg-light py-2">
+        <div class="container d-flex justify-content-between">
             <button id="increase-font" class="btn btn-accessibility" aria-label="Aumentar tamanho da fonte">
                 <i class="fas fa-text-height"></i> A+
             </button>
@@ -42,27 +46,32 @@
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Navegação principal">
             <div class="container">
-                <a class="navbar-brand" href="index.html">JS Acessível</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
-                        aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fab fa-js-square text-warning"></i> JS Acessível
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#inicio">Início</a>
+                            <a class="nav-link" href="#inicio" aria-current="page">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#aulas">Aulas</a>
+                            <a class="nav-link" href="#aulas">Aulas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#exercicios" aria-current="page">Exercícios</a>
+                            <a class="nav-link" href="exercicios.html">Exercícios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#recursos">Recursos</a>
+                            <a class="nav-link" href="#recursos">Recursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#sobre">Sobre</a>
+                            <a class="nav-link" href="#sobre">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -219,13 +228,36 @@
     <!-- Rodapé -->
     <footer class="bg-dark text-white py-4" role="contentinfo">
         <div class="container">
-            <div class="text-center">
-                <p>&copy; 2025 JS Acessível. Todos os direitos reservados.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="index.html" style="text-decoration: none;"><h3 class="h5 text-white">
+                        <i class="fab fa-js-square text-warning"></i> JS Acessível
+                        </h3></a>
+                    <p>Um projeto dedicado a tornar o aprendizado de JavaScript acessível para todos.</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="h5">Links Úteis</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#aulas" class="text-white">Aulas</a></li>
+                        <li><a href="#exercicios" class="text-white">Exercícios</a></li>
+                        <li><a href="#recursos" class="text-white">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="h5">Contato</h3>
+                    <address>
+                        <p>Email: <a href="mailto:contato@jsacessivel.com"
+                                class="text-white">contato@jsacessivel.com</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>&copy; 2025 JS Acessível. Todos os direitos reservados a Nilson Gomes.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Widget VLibras com configurações personalizadas -->
+    <!-- Widget VLibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -274,12 +306,58 @@
                     try {
                         const result = eval(codeInput.value); // Executa o código do usuário
                         output.textContent = `Resultado: ${result}`;
+                        announceMessage(`Código executado com sucesso. Resultado: ${result}`);
                     } catch (error) {
                         output.textContent = `Erro: ${error.message}`;
+                        announceMessage(`Erro ao executar o código: ${error.message}`);
                     }
                 });
             });
+
+            document.getElementById('increase-font').addEventListener('click', () => {
+                announceMessage('Tamanho da fonte aumentado.');
+            });
+
+            document.getElementById('decrease-font').addEventListener('click', () => {
+                announceMessage('Tamanho da fonte diminuído.');
+            });
+
+            document.getElementById('high-contrast').addEventListener('click', () => {
+                announceMessage('Modo de alto contraste ativado.');
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    announceMessage(`Navegando para a seção ${this.textContent}.`);
+                });
+            });
+
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Impede o envio real para fins de demonstração
+                announceMessage('Formulário enviado com sucesso.');
+            });
         });
+
+        function announceMessage(message) {
+            // Atualizar a região aria-live
+            const liveRegion = document.getElementById('screen-reader-live-region');
+            if (liveRegion) {
+                liveRegion.textContent = ''; // Limpa o conteúdo anterior
+                setTimeout(() => {
+                    liveRegion.textContent = message; // Adiciona a nova mensagem
+                }, 100);
+            }
+
+            // Reproduzir o áudio usando SpeechSynthesis
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.lang = 'pt-BR'; // Define o idioma como português do Brasil
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.warn('API SpeechSynthesis não suportada neste navegador.');
+            }
+        }
     </script>
+    <div id="screen-reader-live-region" aria-live="polite" style="position: absolute; left: -9999px;"></div>
 </body>
 </html>
