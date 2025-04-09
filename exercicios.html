@@ -46,7 +46,7 @@
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Navegação principal">
             <div class="container">
-                <a class="navbar-brand" href="index.html" aria-current="page">
+                <a class="navbar-brand" href="index.html" aria-label="Home - JavaScript Acessível">
                     <i class="fab fa-js-square text-warning"></i> JS Acessível
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -313,9 +313,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="index.html" style="text-decoration: none;"><h3 class="h5 text-white">
-                        <i class="fab fa-js-square text-warning"></i> JS Acessível
-                        </h3></a>
+                    <a href="index.html" style="text-decoration: none;" aria-label="Home - JavaScript Acessível">
+                        <h3 class="h5 text-white">
+                            <i class="fab fa-js-square text-warning" aria-hidden="true"></i> JS Acessível
+                        </h3>
+                    </a>
                     <p>Um projeto dedicado a tornar o aprendizado de JavaScript acessível para todos.</p>
                 </div>
                 <div class="col-md-3">
@@ -572,5 +574,88 @@
         });
     </script>
     <div id="screen-reader-live-region" aria-live="polite" style="position: absolute; left: -9999px;"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const liveRegion = document.getElementById('screen-reader-live-region');
+
+            // Função para anunciar mensagens
+            function announceMessage(message) {
+                if (liveRegion) {
+                    liveRegion.textContent = ''; // Limpa o conteúdo anterior
+                    setTimeout(() => {
+                        liveRegion.textContent = message; // Adiciona a nova mensagem
+                    }, 100);
+                }
+
+                // Reproduzir o áudio usando SpeechSynthesis
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(message);
+                    utterance.lang = 'pt-BR'; // Define o idioma como português do Brasil
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    console.warn('API SpeechSynthesis não suportada neste navegador.');
+                }
+            }
+
+            // Adiciona feedback de áudio para todos os botões
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const label = this.getAttribute('aria-label') || this.textContent.trim();
+                    announceMessage(`Botão clicado: ${label}`);
+                });
+            });
+
+            // Adiciona feedback de áudio para todos os links
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function () {
+                    const label = this.getAttribute('aria-label') || this.textContent.trim();
+                    announceMessage(`Navegando para: ${label}`);
+                });
+            });
+
+            // Adiciona feedback de áudio para formulários (se existirem)
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault(); // Impede o envio real para fins de demonstração
+                    announceMessage('Formulário enviado com sucesso.');
+                });
+            });
+
+            // Adiciona feedback de áudio para botões de leitura de conteúdo
+            const contentButtons = document.querySelectorAll('.read-content');
+            contentButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const audioText = this.getAttribute('data-audio');
+                    if (audioText) {
+                        announceMessage(audioText);
+                    }
+                });
+            });
+
+            // Adiciona feedback de áudio para ações específicas
+            document.getElementById('increase-font')?.addEventListener('click', () => {
+                announceMessage('Tamanho da fonte aumentado.');
+            });
+
+            document.getElementById('decrease-font')?.addEventListener('click', () => {
+                announceMessage('Tamanho da fonte diminuído.');
+            });
+
+            document.getElementById('high-contrast')?.addEventListener('click', () => {
+                announceMessage('Modo de alto contraste ativado.');
+            });
+
+            document.getElementById('read-page')?.addEventListener('click', () => {
+                announceMessage('Iniciando leitura da página.');
+            });
+
+            document.getElementById('stop-reading')?.addEventListener('click', () => {
+                announceMessage('Leitura interrompida.');
+            });
+        });
+    </script>
 </body>
 </html>
