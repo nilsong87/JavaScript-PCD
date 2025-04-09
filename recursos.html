@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recursos adicionais para aprendizado de JavaScript acessível">
+    <title>Recursos - JavaScript Acessível</title>
+    
+    <!-- Mesmos assets da página principal -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="icon" href="images/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Barra de Acessibilidade (igual à index) -->
+    <div id="accessibility-bar" class="accessibility-bar bg-light py-2">
+        <div class="container d-flex justify-content-between">
+            <button id="increase-font" class="btn btn-accessibility" aria-label="Aumentar tamanho da fonte">
+                <i class="fas fa-text-height"></i> A+
+            </button>
+            <button id="decrease-font" class="btn btn-accessibility" aria-label="Diminuir tamanho da fonte">
+                <i class="fas fa-text-height"></i> A-
+            </button>
+            <button id="high-contrast" class="btn btn-accessibility" aria-label="Ativar alto contraste">
+                <i class="fas fa-adjust"></i> Contraste
+            </button>
+            <button id="read-page" class="btn btn-accessibility" aria-label="Ler página">
+                <i class="fas fa-volume-up"></i> Ler
+            </button>
+            <button id="stop-reading" class="btn btn-accessibility" aria-label="Parar leitura">
+                <i class="fas fa-volume-mute"></i> Parar
+            </button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Navegação principal">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fab fa-js-square text-warning"></i> JS Acessível
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#aulas">Aulas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="exercicios.html">Exercícios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="recursos.html" aria-current="page">Recursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre.html">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content" role="main">
+        <section id="recursos" class="resources-section py-5" aria-labelledby="resources-heading">
+            <div class="container">
+                <h1 id="resources-heading" class="text-center mb-5">Recursos Adicionais</h1>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title h4">Documentação Acessível</h2>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" aria-label="MDN JavaScript (abre em nova janela)">MDN JavaScript</a></li>
+                                    <li class="mb-2"><a href="https://www.w3schools.com/js/" target="_blank" aria-label="W3Schools JavaScript (abre em nova janela)">W3Schools JavaScript</a></li>
+                                    <li><a href="https://javascript.info/" target="_blank" aria-label="JavaScript.info (abre em nova janela)">JavaScript.info</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title h4">Ferramentas Acessíveis</h2>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="https://www.nvaccess.org/" target="_blank" aria-label="NVDA Screen Reader (abre em nova janela)">NVDA Screen Reader</a></li>
+                                    <li class="mb-2"><a href="https://www.freedomscientific.com/products/software/jaws/" target="_blank" aria-label="JAWS Screen Reader (abre em nova janela)">JAWS Screen Reader</a></li>
+                                    <li><a href="https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn" target="_blank" aria-label="Screen Reader para Chrome (abre em nova janela)">Screen Reader para Chrome</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title h4">Cursos Recomendados</h2>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="https://www.codecademy.com/learn/introduction-to-javascript" target="_blank" aria-label="Codecademy JavaScript (abre em nova janela)">Codecademy JavaScript</a></li>
+                                    <li class="mb-2"><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank" aria-label="freeCodeCamp JavaScript (abre em nova janela)">freeCodeCamp JavaScript</a></li>
+                                    <li><a href="https://www.udemy.com/course/javascript-para-pessoas-com-deficiencia-visual/" target="_blank" aria-label="Curso de JavaScript para DV na Udemy (abre em nova janela)">Curso de JavaScript para DV (Udemy)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title h4">Comunidades Inclusivas</h2>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="https://discord.gg/accessibility" target="_blank" aria-label="Comunidade de Acessibilidade no Discord (abre em nova janela)">Comunidade de Acessibilidade</a></li>
+                                    <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/javascript" target="_blank" aria-label="Stack Overflow JavaScript (abre em nova janela)">Stack Overflow JavaScript</a></li>
+                                    <li><a href="https://pt-br.facebook.com/groups/programadorescomdeficienciavisual/" target="_blank" aria-label="Programadores com DV no Facebook (abre em nova janela)">Programadores com DV (Facebook)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title h4">Dicas para Aprendizado</h2>
+                                <div class="accordion" id="tipsAccordion">
+                                    <div class="accordion-item">
+                                        <h3 class="accordion-header" id="tip1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTip1" aria-expanded="true" aria-controls="collapseTip1">
+                                                Organização do Código
+                                            </button>
+                                        </h3>
+                                        <div id="collapseTip1" class="accordion-collapse collapse show" aria-labelledby="tip1" data-bs-parent="#tipsAccordion">
+                                            <div class="accordion-body">
+                                                <p>Use comentários descritivos e organize seu código em funções lógicas. Isso facilita a navegação com leitores de tela.</p>
+                                                <button class="btn btn-sm btn-outline-primary read-tip" data-audio="Dica de organização de código: Use comentários descritivos e organize seu código em funções lógicas. Isso facilita a navegação com leitores de tela.">
+                                                    <i class="fas fa-volume-up"></i> Ouvir dica
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h3 class="accordion-header" id="tip2">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTip2" aria-expanded="false" aria-controls="collapseTip2">
+                                                Atalhos de Teclado
+                                            </button>
+                                        </h3>
+                                        <div id="collapseTip2" class="accordion-collapse collapse" aria-labelledby="tip2" data-bs-parent="#tipsAccordion">
+                                            <div class="accordion-body">
+                                                <p>Aprenda os atalhos do seu editor de código. Por exemplo, no VS Code você pode usar Ctrl+P para buscar arquivos e F12 para ir à definição de uma função.</p>
+                                                <button class="btn btn-sm btn-outline-primary read-tip" data-audio="Dica de atalhos de teclado: Aprenda os atalhos do seu editor de código. Por exemplo, no VS Code você pode usar Control+P para buscar arquivos e F12 para ir à definição de uma função.">
+                                                    <i class="fas fa-volume-up"></i> Ouvir dica
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé (igual à index) -->
+    <footer class="bg-dark text-white py-4" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="index.html" style="text-decoration: none;"><h3 class="h5 text-white">
+                        <i class="fab fa-js-square text-warning"></i> JS Acessível
+                    </h3></a>
+                    <p>Um projeto dedicado a tornar o aprendizado de JavaScript acessível para todos.</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="h5">Links Úteis</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html#aulas" class="text-white">Aulas</a></li>
+                        <li><a href="exercicios.html" class="text-white">Exercícios</a></li>
+                        <li><a href="recursos.html" class="text-white">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="h5">Contato</h3>
+                    <address>
+                        <p>Email: <a href="mailto:contato@jsacessivel.com" class="text-white">contato@jsacessivel.com</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>&copy; 2025 JS Acessível. Todos os direitos reservados a Nilson Gomes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mesmos scripts da página principal -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script type="module" src="js/a11y.js"></script>
+    <script type="module" src="js/screen-reader.js"></script>
+    <script type="module" src="js/keyboard-nav.js"></script>
+    <script type="module" src="js/app.js"></script>
+    
+    <script>
+        // Script para ler as dicas
+        document.querySelectorAll('.read-tip').forEach(button => {
+            button.addEventListener('click', function() {
+                const audioText = this.getAttribute('data-audio');
+                if (window.a11y) {
+                    window.a11y.announce(audioText);
+                }
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const liveRegion = document.getElementById('screen-reader-live-region');
+
+        // Função para anunciar mensagens
+        function announceMessage(message) {
+            if (liveRegion) {
+                liveRegion.textContent = ''; // Limpa o conteúdo anterior
+                setTimeout(() => {
+                    liveRegion.textContent = message; // Adiciona a nova mensagem
+                }, 100);
+            }
+
+            // Reproduzir o áudio usando SpeechSynthesis
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.lang = 'pt-BR'; // Define o idioma como português do Brasil
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.warn('API SpeechSynthesis não suportada neste navegador.');
+            }
+        }
+
+        // Adiciona feedback de áudio para todos os botões
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const label = this.getAttribute('aria-label') || this.textContent.trim();
+                announceMessage(`: ${label}`);
+            });
+        });
+
+        // Adiciona feedback de áudio para todos os links
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function () {
+                const label = this.getAttribute('aria-label') || this.textContent.trim();
+                announceMessage(`Navegando para: ${label}`);
+            });
+        });
+
+        // Adiciona feedback de áudio para as dicas
+        const tipButtons = document.querySelectorAll('.read-tip');
+        tipButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const audioText = this.getAttribute('data-audio');
+                if (audioText) {
+                    announceMessage(audioText);
+                }
+            });
+        });
+
+        // Adiciona feedback de áudio para o formulário (se existir)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Impede o envio real para fins de demonstração
+                announceMessage('Formulário enviado com sucesso.');
+            });
+        }
+    });
+</script>
+</body>
+</html>

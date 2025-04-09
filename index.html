@@ -68,16 +68,16 @@
                             <a class="nav-link" href="#inicio" aria-current="page">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#aulas">Aulas</a>
+                            <a href="#aulas" class="nav-link" aria-label="Ir para a seção de aulas">Aulas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="exercicios.html">Exercícios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#recursos">Recursos</a>
+                            <a class="nav-link" href="recursos.html">Recursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sobre">Sobre</a>
+                            <a class="nav-link" href="sobre.html">Sobre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contato">Contato</a>
@@ -214,7 +214,7 @@
                     <ul class="list-unstyled">
                         <li><a href="#aulas" class="text-white">Aulas</a></li>
                         <li><a href="exercicios.html" class="text-white">Exercícios</a></li>
-                        <li><a href="#recursos" class="text-white">Recursos</a></li>
+                        <li><a href="recursos.html" class="text-white">Recursos</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -280,6 +280,56 @@
     document.querySelector('form').addEventListener('submit', function (e) {
         e.preventDefault(); // Impede o envio real para fins de demonstração
         announceMessage('Formulário enviado com sucesso.');
+    });
+</script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const liveRegion = document.getElementById('screen-reader-live-region');
+
+        // Função para anunciar mensagens
+        function announceMessage(message) {
+            if (liveRegion) {
+                liveRegion.textContent = ''; // Limpa o conteúdo anterior
+                setTimeout(() => {
+                    liveRegion.textContent = message; // Adiciona a nova mensagem
+                }, 100);
+            }
+
+            // Reproduzir o áudio usando SpeechSynthesis
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.lang = 'pt-BR'; // Define o idioma como português do Brasil
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Adiciona feedback de áudio para todos os botões
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const label = this.getAttribute('aria-label') || this.textContent.trim();
+                announceMessage(`Botão clicado: ${label}`);
+            });
+        });
+
+        // Adiciona feedback de áudio para links
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function () {
+                const label = this.getAttribute('aria-label') || this.textContent.trim();
+                announceMessage(`Navegando para seção: ${label}`);
+            });
+        });
+
+        // Adiciona feedback de áudio para o formulário
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Impede o envio real para fins de demonstração
+                announceMessage('Formulário enviado com sucesso.');
+            });
+        }
     });
 </script>
 

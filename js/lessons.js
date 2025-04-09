@@ -1627,91 +1627,104 @@ console.log(executar(dobrar, 5)); // 10
 
     const lessonsContainer = document.getElementById('lessonsAccordion');
 
-    if (lessonsContainer) {
-        lessonsContainer.innerHTML = '';
-
-        lessons.forEach((lesson, index) => {
-            const lessonItem = document.createElement('div');
-            lessonItem.classList.add('accordion-item');
-
-            lessonItem.innerHTML = `
-                <h2 class="accordion-header" id="heading-${lesson.id}">
-                    <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${lesson.id}" aria-expanded="${index === 0 ? 'true' : 'false'}" aria-controls="collapse-${lesson.id}">
-                        ${lesson.title}
-                    </button>
-                </h2>
-                <div id="collapse-${lesson.id}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading-${lesson.id}" data-bs-parent="#lessonsAccordion">
-                    <div class="accordion-body">
-                        <p>${lesson.description}</p>
-                        <button class="btn btn-primary btn-view-content" data-lesson-id="${lesson.id}" aria-label="Ver conteúdo da aula: ${lesson.title}">Ver Conteúdo</button>
-                        <button class="btn btn-sm btn-outline-primary read-lesson" data-lesson-id="${lesson.id}" aria-label="Ouvir título e descrição da lição: ${lesson.title}">Ouvir Título e Descrição</button>
-                    </div>
-                </div>
-            `;
-
-            lessonsContainer.appendChild(lessonItem);
-        });
-
-        lessonsContainer.addEventListener('click', function (e) {
-            if (e.target.classList.contains('read-lesson')) {
-                const lessonId = e.target.getAttribute('data-lesson-id');
-                const lesson = lessons.find(l => l.id === lessonId);
-
-                if (lesson) {
-                    const textContent = `${lesson.title}. ${lesson.description}`;
-                    speak(textContent); // Reproduz o título e a descrição
-                }
-            }
-
-            if (e.target.classList.contains('btn-view-content')) {
-                const lessonId = e.target.getAttribute('data-lesson-id');
-                const lesson = lessons.find(l => l.id === lessonId);
-
-                if (lesson) {
-                    showLessonContent(lesson);
-                }
-            }
-        });
+    if (!lessonsContainer) {
+        console.error('Elemento lessonsAccordion não encontrado.');
+        return;
     }
 
-    function showLessonContent(lesson) {
-        const modal = document.createElement('div');
-        modal.classList.add('modal', 'fade');
-        modal.id = 'lessonModal';
-        modal.tabIndex = -1;
-        modal.setAttribute('aria-labelledby', 'lessonModalLabel');
-        modal.setAttribute('aria-hidden', 'true');
+    lessonsContainer.innerHTML = '';
 
-        modal.innerHTML = `
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="lessonModalLabel">${lesson.title}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                    </div>
-                    <div class="modal-body">
-                        ${lesson.content}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    </div>
+    lessons.forEach((lesson, index) => {
+        const lessonItem = document.createElement('div');
+        lessonItem.classList.add('accordion-item');
+
+        lessonItem.innerHTML = `
+            <h2 class="accordion-header" id="heading-${lesson.id}">
+                <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${lesson.id}" aria-expanded="${index === 0 ? 'true' : 'false'}" aria-controls="collapse-${lesson.id}">
+                    ${lesson.title}
+                </button>
+            </h2>
+            <div id="collapse-${lesson.id}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading-${lesson.id}" data-bs-parent="#lessonsAccordion">
+                <div class="accordion-body">
+                    <p>${lesson.description}</p>
+                    <button class="btn btn-primary btn-view-content" data-lesson-id="${lesson.id}" aria-label="Ver conteúdo da aula: ${lesson.title}">Ver Conteúdo</button>
+                    <button class="btn btn-sm btn-outline-primary read-lesson" data-lesson-id="${lesson.id}" aria-label="Ouvir título e descrição da lição: ${lesson.title}">Ouvir Título e Descrição</button>
                 </div>
             </div>
         `;
 
-        document.body.appendChild(modal);
+        lessonsContainer.appendChild(lessonItem);
+    });
 
-        const bootstrapModal = new bootstrap.Modal(modal);
-        bootstrapModal.show();
+    lessonsContainer.addEventListener('click', function (e) {
+        if (e.target.classList.contains('read-lesson')) {
+            const lessonId = e.target.getAttribute('data-lesson-id');
+            const lesson = lessons.find(l => l.id === lessonId);
 
-        // Reproduz o conteúdo da lição
-        const textContent = lesson.content.replace(/<[^>]*>/g, '').trim();
-        speak(textContent);
+            if (lesson) {
+                const textContent = `${lesson.title}. ${lesson.description}`;
+                speak(textContent); // Reproduz o título e a descrição
+            } else {
+                console.error(`Lição com ID ${lessonId} não encontrada.`);
+            }
+        }
 
-        modal.addEventListener('hidden.bs.modal', function () {
-            modal.remove();
-        });
+        if (e.target.classList.contains('btn-view-content')) {
+            const lessonId = e.target.getAttribute('data-lesson-id');
+            const lesson = lessons.find(l => l.id === lessonId);
+
+            if (lesson) {
+                showLessonContent(lesson);
+            } else {
+                console.error(`Lição com ID ${lessonId} não encontrada.`);
+            }
+        }
+    });
+}
+
+function showLessonContent(lesson) {
+    // Remove qualquer modal existente antes de criar um novo
+    const existingModal = document.getElementById('lessonModal');
+    if (existingModal) {
+        existingModal.remove();
     }
+
+    const modal = document.createElement('div');
+    modal.classList.add('modal', 'fade');
+    modal.id = 'lessonModal';
+    modal.tabIndex = -1;
+    modal.setAttribute('aria-labelledby', 'lessonModalLabel');
+    modal.setAttribute('aria-hidden', 'true');
+
+    modal.innerHTML = `
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="lessonModalLabel">${lesson.title}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    ${lesson.content}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const bootstrapModal = new bootstrap.Modal(modal);
+    bootstrapModal.show();
+
+    // Reproduz o conteúdo da lição
+    const textContent = lesson.content.replace(/<[^>]*>/g, '').trim();
+    speak(textContent);
+
+    modal.addEventListener('hidden.bs.modal', function () {
+        modal.remove();
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function () {

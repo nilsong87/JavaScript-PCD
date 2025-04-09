@@ -46,7 +46,7 @@
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Navegação principal">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.html" aria-current="page">
                     <i class="fab fa-js-square text-warning"></i> JS Acessível
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -56,22 +56,22 @@
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#inicio" aria-current="page">Início</a>
+                            <a class="nav-link" href="index.html" aria-current="page">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#aulas">Aulas</a>
+                            <a class="nav-link" href="index.html#aulas">Aulas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="exercicios.html">Exercícios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#recursos">Recursos</a>
+                            <a class="nav-link" href="recursos.html">Recursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sobre">Sobre</a>
+                            <a class="nav-link" href="sobre.html">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contato">Contato</a>
+                            <a class="nav-link" href="index.html#contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -83,139 +83,222 @@
     <main id="main-content" role="main">
         <section id="exercicios" class="exercises-section py-5" aria-labelledby="exercises-heading">
             <div class="container">
-                <h1 id="exercises-heading" class="text-center mb-5">Exercícios de JavaScript</h1>
-                <p class="lead text-center">Pratique seus conhecimentos com exercícios interativos e acessíveis.</p>
-                
-                <div class="row">
-                    <div class="col-md-6">
+                <h1 id="exercises-heading" class="text-center mb-5">Introdução ao JavaScript</h1>
+                <p class="lead text-center">Pratique seus conhecimentos sobre variáveis, tipos de dados e operadores.</p>
+
+                <!-- Exercício 1 -->
+                <div class="row" id="exercise-1-container">
+                    <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h2 class="card-title h5">Exercício 1: Variáveis</h2>
                                 <p class="card-text">Crie uma variável chamada <code>nome</code> e atribua o valor "JavaScript".</p>
                                 <textarea id="exercise-1" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 1"></textarea>
                                 <button class="btn btn-success btn-run" data-exercise-id="1">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="1">Limpar</button>
                                 <div id="output-1" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
                                     O resultado aparecerá aqui...
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title h5">Exercício 2: Condicionais</h2>
-                                <p class="card-text">Escreva um código que verifica se um número é maior que 10.</p>
-                                <textarea id="exercise-2" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 2"></textarea>
-                                <button class="btn btn-success btn-run" data-exercise-id="2">Executar</button>
-                                <div id="output-2" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
-                                    O resultado aparecerá aqui...
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-next" data-next="exercise-2-container">Próxima Atividade</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <!-- Exercício 1 -->
-                    <div class="col-md-6">
+                <!-- Exercício 2 -->
+                <div class="row d-none" id="exercise-2-container">
+                    <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h2 class="card-title h5">Exercício 1: Variáveis</h2>
-                                <p class="card-text">Crie uma variável chamada <code>nome</code> e atribua o valor "JavaScript".</p>
-                                <textarea id="exercise-1" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 1"></textarea>
-                                <button class="btn btn-success btn-run" data-exercise-id="1">Executar</button>
-                                <div id="output-1" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
-                                    O resultado aparecerá aqui...
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exercício 2 -->
-                    <div class="col-md-6">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title h5">Exercício 2: Condicionais</h2>
-                                <p class="card-text">Escreva um código que verifica se um número é maior que 10.</p>
+                                <h2 class="card-title h5">Exercício 2: Tipos de Dados</h2>
+                                <p class="card-text">Crie uma variável chamada <code>idade</code> e atribua o valor numérico 25.</p>
                                 <textarea id="exercise-2" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 2"></textarea>
                                 <button class="btn btn-success btn-run" data-exercise-id="2">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="2">Limpar</button>
                                 <div id="output-2" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
                                     O resultado aparecerá aqui...
                                 </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-1-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-3-container">Próxima Atividade</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Exercício 3 -->
-                    <div class="col-md-6">
+                <!-- Exercício 3 -->
+                <div class="row d-none" id="exercise-3-container">
+                    <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h2 class="card-title h5">Exercício 3: Laços de Repetição</h2>
-                                <p class="card-text">Crie um loop que exiba os números de 1 a 5 no console.</p>
+                                <h2 class="card-title h5">Exercício 3: Operadores</h2>
+                                <p class="card-text">Crie duas variáveis chamadas <code>a</code> e <code>b</code>, atribua os valores 10 e 20, respectivamente, e exiba a soma de <code>a</code> e <code>b</code> no console.</p>
                                 <textarea id="exercise-3" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 3"></textarea>
                                 <button class="btn btn-success btn-run" data-exercise-id="3">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="3">Limpar</button>
                                 <div id="output-3" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
                                     O resultado aparecerá aqui...
                                 </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-2-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-4-container">Próxima Atividade</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Exercício 4 -->
-                    <div class="col-md-6">
+                <!-- Exercício 4 -->
+                <div class="row d-none" id="exercise-4-container">
+                    <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h2 class="card-title h5">Exercício 4: Funções</h2>
-                                <p class="card-text">Crie uma função chamada <code>soma</code> que receba dois números como parâmetros e retorne a soma deles.</p>
+                                <h2 class="card-title h5">Exercício 4: Strings</h2>
+                                <p class="card-text">Crie uma variável chamada <code>mensagem</code> e atribua o valor "Olá, mundo!". Exiba o valor no console.</p>
                                 <textarea id="exercise-4" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 4"></textarea>
                                 <button class="btn btn-success btn-run" data-exercise-id="4">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="4">Limpar</button>
                                 <div id="output-4" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
                                     O resultado aparecerá aqui...
                                 </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-3-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-5-container">Próxima Atividade</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Exercício 5 -->
-                    <div class="col-md-6">
+                <!-- Exercício 5 -->
+                <div class="row d-none" id="exercise-5-container">
+                    <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h2 class="card-title h5">Exercício 5: Arrays</h2>
-                                <p class="card-text">Crie um array com os números 1, 2, 3, 4 e 5 e exiba o terceiro número no console.</p>
+                                <h2 class="card-title h5">Exercício 5: Booleanos</h2>
+                                <p class="card-text">Crie uma variável chamada <code>verdadeiro</code> e atribua o valor <code>true</code>. Exiba o valor no console.</p>
                                 <textarea id="exercise-5" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 5"></textarea>
                                 <button class="btn btn-success btn-run" data-exercise-id="5">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="5">Limpar</button>
                                 <div id="output-5" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
                                     O resultado aparecerá aqui...
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exercício 6 -->
-                    <div class="col-md-6">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title h5">Exercício 6: Objetos</h2>
-                                <p class="card-text">Crie um objeto chamado <code>pessoa</code> com as propriedades <code>nome</code> e <code>idade</code>. Exiba o nome no console.</p>
-                                <textarea id="exercise-6" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 6"></textarea>
-                                <button class="btn btn-success btn-run" data-exercise-id="6">Executar</button>
-                                <div id="output-6" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
-                                    O resultado aparecerá aqui...
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-4-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-6-container">Próxima Atividade</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Exercício 7 -->
-                    <div class="col-md-6">
+                <!-- Exercício 6 -->
+                <div class="row d-none" id="exercise-6-container">
+                    <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h2 class="card-title h5">Exercício 7: Manipulação do DOM</h2>
-                                <p class="card-text">Crie um botão que, ao ser clicado, exiba a mensagem "Olá, mundo!" no console.</p>
+                                <h2 class="card-title h5">Exercício 6: Estruturas Condicionais</h2>
+                                <p class="card-text">Crie uma variável chamada <code>nota</code> e atribua um valor numérico. Use uma estrutura condicional para exibir "Aprovado" se a nota for maior ou igual a 7 e "Reprovado" caso contrário.</p>
+                                <textarea id="exercise-6" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 6"></textarea>
+                                <button class="btn btn-success btn-run" data-exercise-id="6">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="6">Limpar</button>
+                                <div id="output-6" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
+                                    O resultado aparecerá aqui...
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-5-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-7-container">Próxima Atividade</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercício 7 -->
+                <div class="row d-none" id="exercise-7-container">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h5">Exercício 7: Laços de Repetição</h2>
+                                <p class="card-text">Crie um loop que exiba os números pares de 1 a 10 no console.</p>
                                 <textarea id="exercise-7" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 7"></textarea>
                                 <button class="btn btn-success btn-run" data-exercise-id="7">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="7">Limpar</button>
                                 <div id="output-7" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
                                     O resultado aparecerá aqui...
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-6-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-8-container">Próxima Atividade</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercício 8 -->
+                <div class="row d-none" id="exercise-8-container">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h5">Exercício 8: Funções</h2>
+                                <p class="card-text">Crie uma função chamada <code>calcularMedia</code> que receba três números como parâmetros e retorne a média deles.</p>
+                                <textarea id="exercise-8" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 8"></textarea>
+                                <button class="btn btn-success btn-run" data-exercise-id="8">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="8">Limpar</button>
+                                <div id="output-8" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
+                                    O resultado aparecerá aqui...
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-7-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-9-container">Próxima Atividade</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercício 9 -->
+                <div class="row d-none" id="exercise-9-container">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h5">Exercício 9: Manipulação do DOM</h2>
+                                <p class="card-text">Crie um botão dinamicamente usando JavaScript. Quando o botão for clicado, exiba a mensagem "Botão clicado!" no console.</p>
+                                <textarea id="exercise-9" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 9"></textarea>
+                                <button class="btn btn-success btn-run" data-exercise-id="9">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="9">Limpar</button>
+                                <div id="output-9" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
+                                    O resultado aparecerá aqui...
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-8-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-10-container">Próxima Atividade</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercício 10 -->
+                <div class="row d-none" id="exercise-10-container">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h5">Exercício 10: Eventos no JavaScript</h2>
+                                <p class="card-text">Adicione um evento de clique a um botão existente na página que exiba a mensagem "Evento disparado!" no console.</p>
+                                <textarea id="exercise-10" class="form-control mb-3" rows="5" aria-label="Digite seu código para o exercício 10"></textarea>
+                                <button class="btn btn-success btn-run" data-exercise-id="10">Executar</button>
+                                <button class="btn btn-secondary btn-clear" data-exercise-id="10">Limpar</button>
+                                <div id="output-10" class="mt-3 p-3 bg-light border rounded" role="log" aria-live="polite">
+                                    O resultado aparecerá aqui...
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary btn-prev" data-prev="exercise-9-container">Atividade Anterior</button>
+                                    <button class="btn btn-primary btn-next" data-next="exercise-1-container">Reiniciar Atividades</button>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +323,7 @@
                     <ul class="list-unstyled">
                         <li><a href="index.html#aulas" class="text-white">Aulas</a></li>
                         <li><a href="exercicios.html" class="text-white">Exercícios</a></li>
-                        <li><a href="#recursos" class="text-white">Recursos</a></li>
+                        <li><a href="recursos.html" class="text-white">Recursos</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -296,21 +379,127 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const runButtons = document.querySelectorAll('.btn-run');
+            const clearButtons = document.querySelectorAll('.btn-clear');
 
+            // Lógica para executar o código do usuário
             runButtons.forEach(button => {
                 button.addEventListener('click', function () {
                     const exerciseId = this.getAttribute('data-exercise-id');
                     const codeInput = document.getElementById(`exercise-${exerciseId}`);
                     const output = document.getElementById(`output-${exerciseId}`);
-                    
+                    const userCode = codeInput.value.trim();
+
                     try {
-                        const result = eval(codeInput.value); // Executa o código do usuário
-                        output.textContent = `Resultado: ${result}`;
-                        announceMessage(`Código executado com sucesso. Resultado: ${result}`);
+                        const userFunction = new Function(userCode);
+                        userFunction();
+
+                        // Lógica específica para cada exercício
+                        switch (exerciseId) {
+                            case '1': // Exercício 1: Variáveis
+                                if (userCode.includes('let nome = "JavaScript";')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você criou corretamente a variável chamada nome com o valor JavaScript.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve criar uma variável chamada "nome" e atribuir o valor "JavaScript".';
+                                    announceMessage('Resposta incorreta. Você deve criar uma variável chamada nome e atribuir o valor JavaScript.');
+                                }
+                                break;
+
+                            case '2': // Exercício 2: Condicionais
+                                if (userCode.includes('if') && userCode.includes('> 10')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você escreveu corretamente o código que verifica se um número é maior que 10.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve usar uma estrutura condicional para verificar se um número é maior que 10.';
+                                    announceMessage('Resposta incorreta. Você deve usar uma estrutura condicional para verificar se um número é maior que 10.');
+                                }
+                                break;
+
+                            case '3': // Exercício 3: Laços de Repetição
+                                if (userCode.includes('for') && userCode.includes('i <= 5')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você criou corretamente um loop que exibe os números de 1 a 5.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve criar um loop que exiba os números de 1 a 5 no console.';
+                                    announceMessage('Resposta incorreta. Você deve criar um loop que exiba os números de 1 a 5 no console.');
+                                }
+                                break;
+
+                            case '4': // Exercício 4: Funções
+                                if (userCode.includes('function soma') && userCode.includes('return a + b')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você criou corretamente a função soma que retorna a soma de dois números.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve criar uma função chamada "soma" que receba dois números e retorne a soma deles.';
+                                    announceMessage('Resposta incorreta. Você deve criar uma função chamada soma que receba dois números e retorne a soma deles.');
+                                }
+                                break;
+
+                            case '5': // Exercício 5: Arrays
+                                if (userCode.includes('let numeros = [1, 2, 3, 4, 5];') && userCode.includes('numeros[2]')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você criou corretamente um array e exibiu o terceiro número no console.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve criar um array com os números 1, 2, 3, 4 e 5 e exibir o terceiro número no console.';
+                                    announceMessage('Resposta incorreta. Você deve criar um array com os números 1, 2, 3, 4 e 5 e exibir o terceiro número no console.');
+                                }
+                                break;
+
+                            case '6': // Exercício 6: Objetos
+                                if (userCode.includes('let pessoa = {') && userCode.includes('nome') && userCode.includes('idade') && userCode.includes('pessoa.nome')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você criou corretamente um objeto chamado pessoa e exibiu o nome no console.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve criar um objeto chamado "pessoa" com as propriedades "nome" e "idade" e exibir o nome no console.';
+                                    announceMessage('Resposta incorreta. Você deve criar um objeto chamado pessoa com as propriedades nome e idade e exibir o nome no console.');
+                                }
+                                break;
+
+                            case '7': // Exercício 7: Manipulação do DOM
+                                if (userCode.includes('document.createElement') && userCode.includes('addEventListener') && userCode.includes('console.log("Olá, mundo!")')) {
+                                    output.textContent = 'Parabéns! Sua resposta está correta.';
+                                    announceMessage('Parabéns! Você criou corretamente um botão que exibe a mensagem Olá, mundo! no console ao ser clicado.');
+                                } else {
+                                    output.textContent = 'Resposta incorreta. Você deve criar um botão que, ao ser clicado, exiba a mensagem "Olá, mundo!" no console.';
+                                    announceMessage('Resposta incorreta. Você deve criar um botão que, ao ser clicado, exiba a mensagem Olá, mundo! no console.');
+                                }
+                                break;
+
+                            default:
+                                output.textContent = 'Exercício não reconhecido.';
+                                announceMessage('Exercício não reconhecido.');
+                                break;
+                        }
                     } catch (error) {
                         output.textContent = `Erro: ${error.message}`;
-                        announceMessage(`Erro ao executar o código: ${error.message}`);
+                        announceMessage(`Erro ao executar o código no exercício ${exerciseId}: ${error.message}`);
                     }
+                });
+            });
+
+            // Lógica para limpar o código e a saída
+            clearButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const exerciseId = this.getAttribute('data-exercise-id');
+                    const codeInput = document.getElementById(`exercise-${exerciseId}`);
+                    const output = document.getElementById(`output-${exerciseId}`);
+
+                    // Limpa o conteúdo do textarea e da saída
+                    codeInput.value = '';
+                    output.textContent = 'O resultado aparecerá aqui...';
+
+                    // Anuncia a ação de limpar
+                    announceMessage(`O conteúdo do exercício ${exerciseId} foi limpo.`);
+                });
+            });
+
+            // Função para ler o enunciado do exercício
+            const readExerciseButtons = document.querySelectorAll('.btn-read-exercise');
+            readExerciseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const exerciseId = this.getAttribute('data-exercise-id');
+                    const exerciseText = document.querySelector(`#exercise-${exerciseId}`).previousElementSibling.textContent;
+                    announceMessage(`Enunciado do exercício ${exerciseId}: ${exerciseText}`);
                 });
             });
 
@@ -357,6 +546,30 @@
                 console.warn('API SpeechSynthesis não suportada neste navegador.');
             }
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nextButtons = document.querySelectorAll('.btn-next');
+            const prevButtons = document.querySelectorAll('.btn-prev');
+
+            // Lógica para avançar para a próxima atividade
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const nextId = this.getAttribute('data-next');
+                    document.querySelectorAll('.row').forEach(row => row.classList.add('d-none'));
+                    document.getElementById(nextId).classList.remove('d-none');
+                });
+            });
+
+            // Lógica para voltar para a atividade anterior
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const prevId = this.getAttribute('data-prev');
+                    document.querySelectorAll('.row').forEach(row => row.classList.add('d-none'));
+                    document.getElementById(prevId).classList.remove('d-none');
+                });
+            });
+        });
     </script>
     <div id="screen-reader-live-region" aria-live="polite" style="position: absolute; left: -9999px;"></div>
 </body>

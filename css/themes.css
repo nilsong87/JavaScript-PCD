@@ -79,7 +79,7 @@
 
 .protanopia-theme .btn-primary {
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(0, 68, 255);
 }
 
 /* Tema para Daltonismo - Tritanopia */
@@ -93,7 +93,7 @@
 
 .tritanopia-theme .btn-primary {
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 /* Classes para alternância de temas */
